@@ -39,15 +39,15 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(161, 95);
+            dataGridView1.Location = new Point(55, 27);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(240, 150);
+            dataGridView1.Size = new Size(472, 307);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // Dodaj
             // 
-            Dodaj.Location = new Point(467, 101);
+            Dodaj.Location = new Point(558, 86);
             Dodaj.Name = "Dodaj";
             Dodaj.Size = new Size(75, 23);
             Dodaj.TabIndex = 1;
@@ -57,7 +57,7 @@
             // 
             // Usun
             // 
-            Usun.Location = new Point(467, 139);
+            Usun.Location = new Point(558, 139);
             Usun.Name = "Usun";
             Usun.Size = new Size(75, 23);
             Usun.TabIndex = 2;
@@ -67,7 +67,7 @@
             // 
             // ZapisCSV
             // 
-            ZapisCSV.Location = new Point(162, 280);
+            ZapisCSV.Location = new Point(148, 347);
             ZapisCSV.Name = "ZapisCSV";
             ZapisCSV.Size = new Size(75, 42);
             ZapisCSV.TabIndex = 3;
@@ -77,7 +77,7 @@
             // 
             // odczytCSV
             // 
-            odczytCSV.Location = new Point(277, 280);
+            odczytCSV.Location = new Point(321, 347);
             odczytCSV.Name = "odczytCSV";
             odczytCSV.Size = new Size(76, 42);
             odczytCSV.TabIndex = 4;

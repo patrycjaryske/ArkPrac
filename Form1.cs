@@ -67,7 +67,7 @@ namespace ArkPrac
 
         private void ZapisCSV_Click(object sender, EventArgs e)
         {
-            using (SaveFileDialog saveFileDialog = new SaveFileDialog { Filter = "CSV files (*.csv)|*.csv"})
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog { Filter = "CSV files (*.csv)|*.csv" })
             {
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
@@ -78,15 +78,57 @@ namespace ArkPrac
                             writer.WriteLine($"{p.ID};{p.Imie};{p.Nazwisko};{p.Wiek};{p.Stanowisko}");
                         }
                     }
-                    MessageBox.Show("Dane zapisane do CSV!", "Sukces", MessageBoxButtons.OK,MessageBoxIcon.Information);
-                    
+                    MessageBox.Show("Dane zapisane do CSV!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
             }
         }
 
         private void odczytCSV_Click(object sender, EventArgs e)
         {
-            
+            using (OpenFileDialog openFileDialog = new OpenFileDialog { Filter = "CSV files (*.csv)|*.csv" })
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    listaPracownikow.Clear();
+                    dataGridView1.Rows.Clear();
+
+                    int maxID = 0; // Zmienna do przechowywania najwiêkszego ID
+
+                    using (StreamReader reader = new StreamReader(openFileDialog.FileName))
+                    {
+                        string line;
+                        while ((line = reader.ReadLine()) != null)
+                        {
+                            string[] dane = line.Split(';');
+                            if (dane.Length < 5) continue; // Pominiêcie b³êdnych linii
+
+                            Pracownik p = new Pracownik
+                            {
+                                ID = int.Parse(dane[0]),
+                                Imie = dane[1],
+                                Nazwisko = dane[2],
+                                Wiek = int.Parse(dane[3]),
+                                Stanowisko = dane[4]
+                            };
+
+                            listaPracownikow.Add(p);
+                            dataGridView1.Rows.Add(p.ID, p.Imie, p.Nazwisko, p.Wiek, p.Stanowisko);
+
+                            if (p.ID > maxID)
+                                maxID = p.ID; // Zapisz najwiêksze ID
+                        }
+                    }
+
+                    // Aktualizujemy zmienn¹ globaln¹ przechowuj¹c¹ ostatnie ID
+                    id = maxID + 1;
+
+                    MessageBox.Show("Dane wczytane z CSV!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+
+
         }
     }
 }
+
