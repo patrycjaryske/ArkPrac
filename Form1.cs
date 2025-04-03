@@ -1,3 +1,5 @@
+using System.Text.Json;
+
 namespace ArkPrac
 {
     public partial class Form1 : Form
@@ -55,7 +57,7 @@ namespace ArkPrac
                 MessageBox.Show("Wybierz wiersz do usuniecia!", "Blad", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
+        [Serializable]
         public class Pracownik
         {
             public int ID { get; set; }
@@ -128,6 +130,20 @@ namespace ArkPrac
             }
 
 
+        }
+
+        private void ZapiszJSON_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog { Filter = "JSON Files(*.json)|*.json" })
+            {
+                if(saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string json = JsonSerializer.Serialize(listaPracownikow, new JsonSerializerOptions { WriteIndented = true });
+                    File.WriteAllText(saveFileDialog.FileName, json);
+                    MessageBox.Show("Udale sie zapisac dane do Json!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information );
+                }
+                
+            }
         }
     }
 }

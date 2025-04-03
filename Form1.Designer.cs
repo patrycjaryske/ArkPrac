@@ -33,6 +33,7 @@
             Usun = new Button();
             ZapisCSV = new Button();
             odczytCSV = new Button();
+            ZapiszJSON = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -85,11 +86,22 @@
             odczytCSV.UseVisualStyleBackColor = true;
             odczytCSV.Click += odczytCSV_Click;
             // 
+            // ZapiszJSON
+            // 
+            ZapiszJSON.Location = new Point(558, 295);
+            ZapiszJSON.Name = "ZapiszJSON";
+            ZapiszJSON.Size = new Size(75, 39);
+            ZapiszJSON.TabIndex = 5;
+            ZapiszJSON.Text = "Zapisz do JSON";
+            ZapiszJSON.UseVisualStyleBackColor = true;
+            ZapiszJSON.Click += ZapiszJSON_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(ZapiszJSON);
             Controls.Add(odczytCSV);
             Controls.Add(ZapisCSV);
             Controls.Add(Usun);
@@ -108,5 +120,6 @@
         private Button Usun;
         private Button ZapisCSV;
         private Button odczytCSV;
+        private Button ZapiszJSON;
     }
 }
