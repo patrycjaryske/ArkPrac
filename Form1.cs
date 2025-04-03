@@ -1,3 +1,5 @@
+using System.Xml.Serialization;
+
 namespace ArkPrac
 {
     public partial class Form1 : Form
@@ -55,7 +57,7 @@ namespace ArkPrac
                 MessageBox.Show("Wybierz wiersz do usuniecia!", "Blad", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
+        [Serializable]
         public class Pracownik
         {
             public int ID { get; set; }
@@ -128,6 +130,27 @@ namespace ArkPrac
             }
 
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void zapiszXML(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog { Filter = "XML files (*.xml)|*.xml" })
+            {
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    XmlSerializer serializer = new XmlSerializer(typeof(List<Pracownik>));
+                    using (TextWriter writer = new StreamWriter(saveFileDialog.FileName))
+                    {
+                        serializer.Serialize(writer, listaPracownikow);
+                    }
+                    MessageBox.Show("Udalo sie zapisac dane do XML!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information );
+                }
+            }
         }
     }
 }

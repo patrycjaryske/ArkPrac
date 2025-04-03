@@ -33,6 +33,7 @@
             Usun = new Button();
             ZapisCSV = new Button();
             odczytCSV = new Button();
+            ZapiszXML = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -85,11 +86,22 @@
             odczytCSV.UseVisualStyleBackColor = true;
             odczytCSV.Click += odczytCSV_Click;
             // 
+            // ZapiszXML
+            // 
+            ZapiszXML.Location = new Point(558, 225);
+            ZapiszXML.Name = "ZapiszXML";
+            ZapiszXML.Size = new Size(75, 42);
+            ZapiszXML.TabIndex = 5;
+            ZapiszXML.Text = "Zapisz do XML";
+            ZapiszXML.UseVisualStyleBackColor = true;
+            ZapiszXML.Click += zapiszXML;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(ZapiszXML);
             Controls.Add(odczytCSV);
             Controls.Add(ZapisCSV);
             Controls.Add(Usun);
@@ -108,5 +120,6 @@
         private Button Usun;
         private Button ZapisCSV;
         private Button odczytCSV;
+        private Button ZapiszXML;
     }
 }
