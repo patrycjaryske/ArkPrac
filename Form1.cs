@@ -145,6 +145,35 @@ namespace ArkPrac
                 
             }
         }
+        private void OdczytajJSON_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog { Filter = "JSON Files (*.json)|*.json" })
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string json = File.ReadAllText(openFileDialog.FileName);
+                    try
+                    {
+                        listaPracownikow = JsonSerializer.Deserialize<List<Pracownik>>(json);
+                        dataGridView1.Rows.Clear();
+
+                        int maxID = 0;
+                        foreach (var p in listaPracownikow)
+                        {
+                            dataGridView1.Rows.Add(p.ID, p.Imie, p.Nazwisko, p.Wiek, p.Stanowisko);
+                            if (p.ID > maxID) maxID = p.ID;
+                        }
+                        id = maxID + 1;
+
+                        MessageBox.Show("Wczytano dane z JSON!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"B³¹d przy odczycie JSON: {ex.Message}", "B³¹d", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
     }
 }
 
