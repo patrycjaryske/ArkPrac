@@ -35,6 +35,7 @@
             odczytCSV = new Button();
             ZapiszJSON = new Button();
             ZapiszXML = new Button();
+            odczytXML = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -107,11 +108,22 @@
             ZapiszXML.UseVisualStyleBackColor = true;
             ZapiszXML.Click += zapiszXML;
             // 
+            // odczytXML
+            // 
+            odczytXML.Location = new Point(663, 225);
+            odczytXML.Name = "odczytXML";
+            odczytXML.Size = new Size(75, 42);
+            odczytXML.TabIndex = 6;
+            odczytXML.Text = "Odczytaj z XML";
+            odczytXML.UseVisualStyleBackColor = true;
+            odczytXML.Click += OdczytajXML_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(odczytXML);
             Controls.Add(ZapiszJSON);
             Controls.Add(ZapiszXML);
             Controls.Add(odczytCSV);
@@ -134,5 +146,6 @@
         private Button odczytCSV;
         private Button ZapiszJSON;
         private Button ZapiszXML;
+        private Button odczytXML;
     }
 }
