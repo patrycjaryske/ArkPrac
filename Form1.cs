@@ -1,5 +1,7 @@
 using System.Text.Json;
 
+using System.Xml.Serialization;
+
 namespace ArkPrac
 {
     public partial class Form1 : Form
@@ -145,6 +147,65 @@ namespace ArkPrac
                 
             }
         }
+    
+
+
+        
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void zapiszXML(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog { Filter = "XML files (*.xml)|*.xml" })
+            {
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    XmlSerializer serializer = new XmlSerializer(typeof(List<Pracownik>));
+                    using (TextWriter writer = new StreamWriter(saveFileDialog.FileName))
+                    {
+                        serializer.Serialize(writer, listaPracownikow);
+                    }
+                    MessageBox.Show("Udalo sie zapisac dane do XML!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information );
+                }
+            }
+        }
+
+        private void OdczytajXML_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog { Filter = "XML Files (*.xml)|*.xml" })
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        XmlSerializer serializer = new XmlSerializer(typeof(List<Pracownik>));
+                        using (FileStream fs = new FileStream(openFileDialog.FileName, FileMode.Open))
+                        {
+                            listaPracownikow = (List<Pracownik>)serializer.Deserialize(fs);
+                        }
+
+                        dataGridView1.Rows.Clear();
+                        int maxID = 0;
+                        foreach (var p in listaPracownikow)
+                        {
+                            dataGridView1.Rows.Add(p.ID, p.Imie, p.Nazwisko, p.Wiek, p.Stanowisko);
+                            if (p.ID > maxID) maxID = p.ID;
+                        }
+                        id = maxID + 1;
+
+                        MessageBox.Show("Wczytano dane z XML!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"B³¹d przy odczycie XML: {ex.Message}", "B³¹d", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
         private void OdczytajJSON_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog { Filter = "JSON Files (*.json)|*.json" })

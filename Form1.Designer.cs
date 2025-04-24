@@ -34,6 +34,8 @@
             ZapisCSV = new Button();
             odczytCSV = new Button();
             ZapiszJSON = new Button();
+            ZapiszXML = new Button();
+            odczytXML = new Button();
             OdczytJSON = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -97,6 +99,26 @@
             ZapiszJSON.UseVisualStyleBackColor = true;
             ZapiszJSON.Click += ZapiszJSON_Click;
             // 
+            // ZapiszXML
+            // 
+            ZapiszXML.Location = new Point(558, 225);
+            ZapiszXML.Name = "ZapiszXML";
+            ZapiszXML.Size = new Size(75, 42);
+            ZapiszXML.TabIndex = 5;
+            ZapiszXML.Text = "Zapisz do XML";
+            ZapiszXML.UseVisualStyleBackColor = true;
+            ZapiszXML.Click += zapiszXML;
+            // 
+            // odczytXML
+            // 
+            odczytXML.Location = new Point(663, 225);
+            odczytXML.Name = "odczytXML";
+            odczytXML.Size = new Size(75, 42);
+            odczytXML.TabIndex = 6;
+            odczytXML.Text = "Odczytaj z XML";
+            odczytXML.UseVisualStyleBackColor = true;
+            odczytXML.Click += OdczytajXML_Click;
+            // 
             // OdczytJSON
             // 
             OdczytJSON.Location = new Point(653, 295);
@@ -112,8 +134,10 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(odczytXML);
             Controls.Add(OdczytJSON);
             Controls.Add(ZapiszJSON);
+            Controls.Add(ZapiszXML);
             Controls.Add(odczytCSV);
             Controls.Add(ZapisCSV);
             Controls.Add(Usun);
@@ -133,6 +157,8 @@
         private Button ZapisCSV;
         private Button odczytCSV;
         private Button ZapiszJSON;
+        private Button ZapiszXML;
+        private Button odczytXML;
         private Button OdczytJSON;
     }
 }
