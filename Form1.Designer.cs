@@ -111,7 +111,7 @@
             // 
             // odczytXML
             // 
-            odczytXML.Location = new Point(663, 225);
+            odczytXML.Location = new Point(653, 225);
             odczytXML.Name = "odczytXML";
             odczytXML.Size = new Size(75, 42);
             odczytXML.TabIndex = 6;
